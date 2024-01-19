@@ -2,14 +2,14 @@ const catchAsync = require("../utils/catchAsync");
 const httpStatus = require("http-status");
 const { schedule } = require("../models/schedule.model");
  
-  const notFound={
+  const notFound=[{
     _id: "N/A",
     title: "N/A",
     description: "N/A",
     subject: "N/A",
     frequency: "N/A",
     repeat: "N/A"
-  }
+  }]
 const getAllSchedules=catchAsync(async (req,res)=>{
            const {search}= req.query;
            const title= search ? search : "";
