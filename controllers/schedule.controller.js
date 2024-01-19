@@ -7,7 +7,7 @@ const getAllSchedules=catchAsync(async (req,res)=>{
            const title= search ? search : "";
            const schedules = await schedule.find({ title: { $regex: title, $options: "i" } });
            if (!schedules.length) {
-            res.status(404).json({ message: "No schedules Found" });
+            res.status(200).json({ message: "No schedules Found" });
           }
            res.status(200).send({ schedules: schedules });
 })
@@ -16,18 +16,21 @@ const getSchedule= catchAsync( async (req, res)=>{
       const {id} = req.params;
       const schedul =await schedule.findById(id);
       if (!schedul) {
-        res.status(404).json({ message: "specific schedule not found!" });
+        res.status(200).json({ message: "specific schedule not found!" });
       }
    res.status(200).send(schedul);
 })
 
-const addSchedule=catchAsync(async (req,res)=>{
-    console.log("Inside post req.")
-    delete req.body._id;
-    const schedul= await schedule.create(req.body).catch((err)=>{
-        throw new Error("Schedule did not get added.")
-    });
-    res.status(201).send(schedul);
+const addSchedule= catchAsync (async (req,res)=>{
+    try{
+
+        console.log("Inside post req.")
+        delete req.body._id;
+        const schedul= await schedule.create(req.body)
+        return res.status(201).send(schedul);
+    }catch(err){
+        return res.status(200).send(err)
+    }
 })
 
 const updateSchedule = catchAsync(async (req,res)=>{

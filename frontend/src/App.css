@@ -1,0 +1,111 @@
+*{
+  font-family:Arial, Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+  
+.main-container{
+  background-color: #F3F3F9;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+
+img,button{
+  cursor: pointer;
+}
+
+
+th{
+  text-align: start;
+  padding: 1rem 1rem;
+  font-weight: 100;
+  
+}
+
+
+.side-rectangle{
+  background-color: #391E5A;
+  height: 100vh;
+  width: 5rem;
+}
+
+.todo-container{
+  width: 100vw;
+}
+
+.top-rectangle{
+  border-top: 1px solid #D8D2DE;
+  border-bottom: 1px solid #D8D2DE;
+  background: var(--Blue10, rgba(60, 30, 90, 0.10));
+  height: 5vh;
+  width: 100rvw;
+
+}
+
+
+.addSearch-todo{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+
+
+.addTodo-btn{
+display: flex;
+justify-content: baseline;
+color: white;
+border-radius: 4px;
+border: 1px solid #E4E4EE;
+background-color: #391E5A;
+}
+
+
+
+
+.text-addTodo-btn{
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+  cursor: pointer;
+  user-select: none;
+}
+
+.text-addTodo-btn>div{
+   margin: 0rem 0.2rem;
+}
+
+.searchBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #E4E4EE;
+  background-color: #FFF;
+}
+
+
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+
+.searchInput{
+  background-color: white;
+  border: none;
+}
+
+
+
+.todoList-container{
+  padding: 1rem 2rem;
+}

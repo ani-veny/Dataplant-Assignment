@@ -4,24 +4,24 @@ const scheduleSchema = mongoose.Schema(
     {
       title: {
         type: String,
-        required: true,
+        // required: true,
         trim: true,
         // lowercase: true,
       },
       
     description: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
          },
     subject: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
          },
     time: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
          },
     repeat: {

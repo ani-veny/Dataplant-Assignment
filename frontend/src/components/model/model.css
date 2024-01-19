@@ -1,0 +1,74 @@
+.model-container {
+  border-radius: 0.3rem;
+}
+
+.inputs-val {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: first baseline;
+}
+
+.model-innerContainer {
+  padding: 1rem 1.5rem;
+}
+
+.input-title {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+  padding: 0.5rem 0rem;
+}
+
+.sub-btn {
+  border-radius: 4px;
+  background: #391e5a;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+div > input {
+  border-radius: 4px;
+  border: 1px solid var(--Blue10, rgba(60, 30, 90, 0.1));
+  padding: 0.3rem 0.4rem;
+  background: #fff;
+}
+
+.cal-btn {
+  border-radius: 4px;
+  background: #ebe8ef;
+  padding: 0.5rem 1rem;
+}
+
+.model-container {
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  width: 20rem;
+  background-color: white;
+  z-index: 1;
+}
+
+
+#frequency {
+  border-radius: 4px;
+  border: 1px solid var(--Blue10, rgba(60, 30, 90, 0.1));
+  background: #fff;
+  padding: 0.3rem 0.4rem;
+  width: 10rem;
+}
+
+.monthly{
+  padding: 0.3rem 0.4rem;
+  width: 10rem;
+}
+
+.weekly-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 10rem;
+
+}
