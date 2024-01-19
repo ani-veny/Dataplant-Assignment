@@ -23,6 +23,7 @@ const getSchedule= catchAsync( async (req, res)=>{
 
 const addSchedule=catchAsync(async (req,res)=>{
     console.log("Inside post req.")
+    delete req.body._id;
     const schedul= await schedule.create(req.body).catch((err)=>{
         throw new Error("Schedule did not get added.")
     });
