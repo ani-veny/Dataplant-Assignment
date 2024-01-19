@@ -35,7 +35,7 @@ const Todo: React.FC<TodoProps> = ({ text, updateTodo, deleteTodo }) => {
       <td className='todo-description'>{text.description}</td>
       <td>{text.subject}</td>
       <td>
-      {text.frequency!="Daily"?text.repeat:"At Daily"} at {" "}
+      {text.frequency!="Daily"?text.repeat:"Daily"} at {" "}
       {text.time}</td>
       <td>
       <button onClick={() => handleInputChange('update')}>

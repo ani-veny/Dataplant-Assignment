@@ -1,13 +1,21 @@
 const catchAsync = require("../utils/catchAsync");
 const httpStatus = require("http-status");
 const { schedule } = require("../models/schedule.model");
-
+ 
+  const notFound={
+    _id: "N/A",
+    title: "N/A",
+    description: "N/A",
+    subject: "N/A",
+    frequency: "N/A",
+    repeat: "N/A"
+  }
 const getAllSchedules=catchAsync(async (req,res)=>{
            const {search}= req.query;
            const title= search ? search : "";
            const schedules = await schedule.find({ title: { $regex: title, $options: "i" } });
            if (!schedules.length) {
-            res.status(200).json({ message: "No schedules Found" });
+            res.status(200).send({schedules: notFound});
           }
            res.status(200).send({ schedules: schedules });
 })
@@ -16,7 +24,7 @@ const getSchedule= catchAsync( async (req, res)=>{
       const {id} = req.params;
       const schedul =await schedule.findById(id);
       if (!schedul) {
-        res.status(200).json({ message: "specific schedule not found!" });
+        res.status(200).send({schedules: notFound});
       }
    res.status(200).send(schedul);
 })

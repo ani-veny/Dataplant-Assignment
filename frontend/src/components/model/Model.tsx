@@ -37,13 +37,13 @@ const MyModal: React.FC<ModalProps> = ({
   addTodo,
 }) => {
   const [data, setData] = useState({
-    _id: "",
-    title: "",
-    description: "",
-    subject: "",
-    frequency: "Daily",
-    repeat: "",
-    time: "",
+    _id:"",
+    title:"",
+    description:"",
+    subject:"",
+    frequency:"Daily",
+    repeat:"",
+    time:""
   });
 
   let [days, setDays] = useState([
@@ -82,37 +82,37 @@ const MyModal: React.FC<ModalProps> = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setData({
       ...data,
-      [name]: value,
+      [name]:value
     });
   };
 
   function generateString(days: Days[]): string {
     let string = "";
     for (let i = 0; i < days.length; i++) {
-      if (days[i].status == true) {
-        string += days[i].val + ",";
+      if (days[i].status === true) {
+        string += days[i].val +",";
       }
     }
     return string;
   }
 
   const handleSubmit = (str: string) => {
-    if (str == "submit" && addTodo) {
+    if (str === "submit" && addTodo) {
       data._id =String( Math.floor(Math.random() * 10000));
       let updatedRepeat: string;
       if (data.frequency === "Weekly") {
         updatedRepeat = generateString(days);
         let newDataWithRepeat = { ...data, repeat: updatedRepeat };
+        postTodosApi(newDataWithRepeat)
         addTodo(newDataWithRepeat);
       } else {
+        postTodosApi(data)
         addTodo(data);
       }
-      postTodosApi(data)
       onClose();
-    } else if (str == "close") {
+    } else if (str === "close") {
       onClose();
     } else if (str === "update" && updateTodoFn) {
       let updatedRepeat: string;
@@ -123,21 +123,20 @@ const MyModal: React.FC<ModalProps> = ({
         updatedRepeat = generateString(days);
         let newDataWithRepeat = { ...data, repeat: updatedRepeat };
         updateTodoFn(newDataWithRepeat);
+        patchTodosApi(newDataWithRepeat,newDataWithRepeat._id)
       } else {
         updateTodoFn(data);
+        patchTodosApi(data,data._id)
       }
-       patchTodosApi(data,data._id)
       onClose();
     }
   };
 
   useEffect(() => {
-    if (modelName == "update" && updateVal) {
+    if (modelName === "update" && updateVal) {
       setData(updateVal);
     }
 
-    if (modelName == "update" && updateVal) {
-    }
   }, []);
 
   return (
@@ -203,20 +202,20 @@ const MyModal: React.FC<ModalProps> = ({
                 onChange={handleInputChange}
               /> */}
 
-                {data.frequency == "Weekly" && (
+                {data.frequency === "Weekly" && (
                   <div>
                     <WeekDay days={days} selectDay={handleWeeklyChange} />
                   </div>
                 )}
 
-                {data.frequency == "Monthly" && (
+                {data.frequency === "Monthly" && (
                   <select
                     className='monthly'
                     id='repeat'
                     value={data.repeat}
                     onChange={handleRepeatChange}>
-                    <option value='At Monday'>At Monday</option>
-                    <option value='At Friday'>At Friday</option>
+                    <option value='Monday'>At Monday</option>
+                    <option value='Friday'>At Friday</option>
                   </select>
                 )}
               </div>
@@ -241,7 +240,7 @@ const MyModal: React.FC<ModalProps> = ({
               </button>
             </div>
             <div>
-              {modelName == "submit" ? (
+              {modelName === "submit" ? (
                 <button
                   className='sub-btn'
                   onClick={() => handleSubmit("submit")}>

@@ -8,6 +8,6 @@ export const deleteTodosApi = async (id: string) => {
     const response = await axios.delete(`${BASE_URL}/${id}`);
     return response.data;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };

@@ -2,10 +2,10 @@ export interface Data {
   _id:string;
   title: string;
   description: string;
-  subject: string;
-  frequency: string;
-  repeat: (string);
-  time: string;
+  subject:string;
+  frequency:string;
+  repeat:string;
+  time:string;
 };
 
 export const dummy: Data[] = [

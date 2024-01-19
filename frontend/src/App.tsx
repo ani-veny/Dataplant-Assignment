@@ -36,10 +36,15 @@ const App: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const searchHandler = () => {
-    setSearch("");
+  
+  const searchButtonHandler = async () => {
+    try {
+      const data = await getTodosApi(`/?search=${search}`);
+      setTodos(data);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
   };
-
   const handleAddTodo = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -50,9 +55,7 @@ const App: React.FC = () => {
   }
 
   useEffect(() => {
-    if (dummy) {  
-      setTodos(dummy);
-    }
+   
     getData()
   }, []);
 
@@ -68,9 +71,9 @@ const App: React.FC = () => {
               className="searchInput"
               placeholder="search.."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e)=>setSearch(e.target.value)}
             />
-            <span onClick={searchHandler} className="search-btn">
+            <span onClick={()=>searchButtonHandler()} className="search-btn">
               <img src={SearchSvg} alt='search' />
             </span>
           </div>
