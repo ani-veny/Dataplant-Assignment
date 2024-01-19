@@ -36,6 +36,7 @@ const updateSchedule = catchAsync(async (req,res)=>{
     schedul.description=req.body.description;
     schedul.subject=req.body.subject;
     schedul.time=req.body.time;
+    schedul.frequency=req.body.frequency;
     if(req.body.repeat)
     schedul.repeat=req.body.repeat;
     else{

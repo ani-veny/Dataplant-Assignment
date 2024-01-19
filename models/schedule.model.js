@@ -28,6 +28,10 @@ const scheduleSchema = mongoose.Schema(
             type: String,
             trim: true,
          },
+    frequency: {
+            type: String,
+            trim: true,
+         },
     }, 
     {
       timestamps: false,
