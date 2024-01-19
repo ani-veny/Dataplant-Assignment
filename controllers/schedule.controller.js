@@ -4,9 +4,8 @@ const { schedule } = require("../models/schedule.model");
 
 const getAllSchedules=catchAsync(async (req,res)=>{
            const {search}= req.query;
-           console.log(search)
            const title= search ? search : "";
-           const schedules = await schedule.find({ title: { $regex: `^${title}$`, $options: "i" } });
+           const schedules = await schedule.find({ title: { $regex: title, $options: "i" } });
            if (!schedules.length) {
             res.status(404).json({ message: "No schedules Found" });
           }
